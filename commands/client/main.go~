@@ -1,0 +1,12 @@
+package main
+
+import "log"
+
+func main (){
+	res, err := http.Get("http://localhost:8080")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	defer res
+}

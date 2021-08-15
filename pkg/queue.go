@@ -1,4 +1,4 @@
-package main
+package pkg
 
 type Queue interface {
 	Front() (*TreeNode, int64)
@@ -6,14 +6,14 @@ type Queue interface {
 	Len() int
 }
 
-func (q *queueTreeNode) Front() (*TreeNode, int64) {
+func (q *QueueTreeNode) Front() (*TreeNode, int64) {
 	result := q.top.value
 	level := q.top.level
 	q.top = q.top.next
 	return result, level
 }
 
-func (q *queueTreeNode) Push(node *TreeNode, level int64) {
+func (q *QueueTreeNode) Push(node *TreeNode, level int64) {
 	q.size++
 	item := &queueTreeNodeItem{
 		value: node,
@@ -28,7 +28,7 @@ func (q *queueTreeNode) Push(node *TreeNode, level int64) {
 	q.tail = q.tail.next
 }
 
-func (q *queueTreeNode) Len() int {
+func (q *QueueTreeNode) Len() int {
 	return q.size
 }
 
@@ -38,7 +38,7 @@ type queueTreeNodeItem struct {
 	next  *queueTreeNodeItem
 }
 
-type queueTreeNode struct {
+type QueueTreeNode struct {
 	top  *queueTreeNodeItem
 	tail *queueTreeNodeItem
 	size int

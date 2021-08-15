@@ -1,17 +1,16 @@
-package main
+package pkg
 
-
-type stackTreeNodeItem struct {
+type StackTreeNodeItem struct {
 	value *TreeNode
-	next  *stackTreeNodeItem
+	next  *StackTreeNodeItem
 }
 
-type stackTreeNode struct {
-	top  *stackTreeNodeItem
+type StackTreeNode struct {
+	top  *StackTreeNodeItem
 	size int
 }
 
-func (s *stackTreeNode) Pop() *TreeNode {
+func (s *StackTreeNode) Pop() *TreeNode {
 	if s.Len() > 0 {
 		topStackVal := s.top.value
 		s.top = s.top.next
@@ -21,15 +20,15 @@ func (s *stackTreeNode) Pop() *TreeNode {
 	return nil
 }
 
-func (s *stackTreeNode) Push(treeNode *TreeNode) {
-	s.top = &stackTreeNodeItem{
+func (s *StackTreeNode) Push(treeNode *TreeNode) {
+	s.top = &StackTreeNodeItem{
 		value: treeNode,
 		next:  s.top,
 	}
 	s.size++
 }
 
-func (s *stackTreeNode) Len() int {
+func (s *StackTreeNode) Len() int {
 	return s.size
 }
 

@@ -1,28 +1,31 @@
-package main
+package mock
 
-func getLetterNodes() *TreeNode {
-	return &TreeNode{
+import "github.com/jakha/lc/pkg"
+
+
+func GetLetterNodes() *pkg.TreeNode {
+	return &pkg.TreeNode{
 		Val: "f",
-		Left: &TreeNode{
+		Left: &pkg.TreeNode{
 			Val: "b",
-			Left: &TreeNode{
+			Left: &pkg.TreeNode{
 				Val: "a",
 			},
-			Right: &TreeNode{
+			Right: &pkg.TreeNode{
 				Val: "d",
-				Left: &TreeNode{
+				Left: &pkg.TreeNode{
 					Val: "c",
 				},
-				Right: &TreeNode{
+				Right: &pkg.TreeNode{
 					Val: "e",
 				},
 			},
 		},
-		Right: &TreeNode{
+		Right: &pkg.TreeNode{
 			Val: "g",
-			Right: &TreeNode{
+			Right: &pkg.TreeNode{
 				Val: "i",
-				Left: &TreeNode{
+				Left: &pkg.TreeNode{
 					Val: "h",
 				},
 			},
@@ -30,51 +33,51 @@ func getLetterNodes() *TreeNode {
 	}
 }
 
-func getFirst() *TreeNode {
-	return &TreeNode{
+func getFirst() *pkg.TreeNode {
+	return &pkg.TreeNode{
 		Val: "1",
-		Left: &TreeNode{
+		Left: &pkg.TreeNode{
 			Val: "4",
-			Left: &TreeNode{
+			Left: &pkg.TreeNode{
 				Val: "2",
 			},
 		},
-		Right: &TreeNode{
+		Right: &pkg.TreeNode{
 			Val: "3",
 		},
 	}
 }
 
-func getSecond() *TreeNode {
-	return &TreeNode{
+func getSecond() *pkg.TreeNode {
+	return &pkg.TreeNode{
 		Val: "2",
-		Left: &TreeNode{
+		Left: &pkg.TreeNode{
 			Val: "3",
-			Left: &TreeNode{
+			Left: &pkg.TreeNode{
 				Val: "1",
 			},
 		},
 	}
 }
 
-func getThird() *TreeNode {
-	return &TreeNode{
+func getThird() *pkg.TreeNode {
+	return &pkg.TreeNode{
 		Val: "3",
-		Left: &TreeNode{
+		Left: &pkg.TreeNode{
 			Val: "1",
-			Right: &TreeNode{
+			Right: &pkg.TreeNode{
 				Val: "2",
 			},
 		},
 	}
 }
 
-func getForth() *TreeNode {
-	return &TreeNode{
+func getForth() *pkg.TreeNode {
+	return &pkg.TreeNode{
 		Val: "2",
-		Left: &TreeNode{
+		Left: &pkg.TreeNode{
 			Val: "3",
-			Left: &TreeNode{
+			Left: &pkg.TreeNode{
 				Val: "1",
 			},
 		},
