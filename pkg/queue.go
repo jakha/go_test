@@ -1,8 +1,8 @@
 package pkg
 
 type Queue interface {
-	Front() (*TreeNode, int64)
-	Push(node *TreeNode, level int64)
+	Front() (*TreeNode, int)
+	Push(node *TreeNode, level int)
 	Len() int
 }
 
@@ -46,23 +46,33 @@ type QueueTreeNode struct {
 
 // ========================================================
 
-func (q *node) Front() string {
-	result := q.top.value
-	q.top = q.top.next
-	return result
+func NewQueue() Queue {
+	return &node{}
 }
 
-func (q *node) Push(d string) {
+func (q *node) Front() (*TreeNode, int) {
+	if q.top == nil {
+		return nil, 0
+	}
+	result := q.top.current
+	level := q.top.level
+	q.top = q.top.next
+	return result, level
+}
+
+func (q *node) Push(d *TreeNode, level int) {
 	q.size++
 	if q.top == nil {
-		q.top = &itemS{
-			value: d,
+		q.top = &itemL{
+			current: d,
+			level:   level,
 		}
 		q.tail = q.top
 		return
 	}
-	q.tail.next = &itemS{
-		value: d,
+	q.tail.next = &itemL{
+		current: d,
+		level:   level,
 	}
 	q.tail = q.tail.next
 }
@@ -71,13 +81,14 @@ func (q *node) Len() int {
 	return q.size
 }
 
-type itemS struct {
-	value string
-	next  *itemS
+type itemL struct {
+	current *TreeNode
+	level   int
+	next    *itemL
 }
 
 type node struct {
-	top  *itemS
-	tail *itemS
+	top  *itemL
+	tail *itemL
 	size int
 }

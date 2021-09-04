@@ -1,32 +1,35 @@
 package main
 
 import (
+	"fmt"
+
+	"github.com/jakha/lc/mock"
 	"github.com/jakha/lc/pkg"
 )
 
 func main() {
+	levelOrderTraversal(mock.GetLetterNodes())
 }
 
 func levelOrderTraversal(root *pkg.TreeNode) {
-	// queue := new(pkg.QueueTreeNode)
-	// // result := make([][]string, 0)
-	// node := root
-	// resultSub := make([]string, 0)
-	// var level int64 = 0
-	// iteration := 0
-	// for node != nil {
-	// 	if node.Left != nil {
-	// 		nLevel := level + 1
-	// 		queue.Push(node.Left, nLevel)
-	// 	}
-	// 	if node.Right != nil {
-	// 		nLevel := level + 1
-	// 		queue.Push(node.Right, nLevel)
-	// 	}
+	cortege := make([][]string, 0)
+	nodeQueue := pkg.NewQueue()
+	node := root
+	level := 0
+	for node != nil {
+		if len(cortege) < level+1 {
+			cortege = append(cortege, []string{})
+		}
+		cortege[level] = append(cortege[level], node.Val)
+		level++
+		if node.Left != nil {
+			nodeQueue.Push(node.Left, level)
+		}
+		if node.Right != nil {
+			nodeQueue.Push(node.Right, level)
+		}
+		node, level = nodeQueue.Front()
+	}
 
-	// 	node, level = queue.Front()
-	// 	iterati
-	// }
-
-	println("tutu anesku")
+	fmt.Println(cortege)
 }
